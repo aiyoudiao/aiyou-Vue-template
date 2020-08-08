@@ -16,11 +16,12 @@ const store = new Vuex.Store({
             {
                 text: '一级菜单',
                 type: 'ios-paper',
+                hidden: false,
                 children: [
                     {
                         text: '二级菜单',
                         type: 'ios-paper',
-                        hidden: true,
+                        hidden: false,
                         children: [
                             {
                                 type: 'ios-notifications-outline',

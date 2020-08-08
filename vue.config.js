@@ -7,7 +7,7 @@ function resolve(dir) {
 
 module.exports = {
     /* 所有的资源都会被链接为相对路径，这样打出来的包可以被部署在任意路径 */
-    publicPath: process.env.NODE_ENV === 'production' ? '/wechatmp' : '',
+    publicPath: process.env.NODE_ENV === 'production' ? '' : '',
     // publicPath: '',
     /* 生成的生产环境构建文件的目 */
     outputDir: 'dist',
