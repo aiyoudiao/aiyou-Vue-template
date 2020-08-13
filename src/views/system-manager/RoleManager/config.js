@@ -1,4 +1,3 @@
-
 /* column： 列表页面的表头字段集合 */
 export const column = [
     // {

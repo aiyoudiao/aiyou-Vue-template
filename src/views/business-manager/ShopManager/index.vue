@@ -2,32 +2,16 @@
   <div style="padding: 10px">
     <div style="background: #fff; border-radius: 8px; padding: 20px;">
       <Form :model="formItem" :label-width="80">
-        <Row>
-          <Col span="11">
-            <FormItem label="用户名" :label-width="labelWidth">
-              <Input v-model="formItem.userName" placeholder="请输入用户名" clearable />
-            </FormItem>
-          </Col>
-          <Col span="11" offest="2">
-            <FormItem label="权限代码" :label-width="labelWidth">
-              <Select v-model="formItem.powerCode" placeholder="选择权限代码">
-                <Option value="0">guest</Option>
-                <Option value="1">admin</Option>
-                <Option value="2">administrator</Option>
-              </Select>
-            </FormItem>
-          </Col>
-        </Row>
 
         <Row>
           <Col span="11">
-            <FormItem label="手机号" :label-width="labelWidth">
-              <Input v-model="formItem.phoneNumber" placeholder="请输入手机号" clearable />
+            <FormItem label="商店名称" :label-width="labelWidth">
+              <Input v-model="formItem.st_name" placeholder="请输入商店名称" clearable />
             </FormItem>
           </Col>
           <Col span="11" offest="2">
-            <FormItem label="邮箱地址" :label-width="labelWidth">
-              <Input v-model="formItem.emailAddress" placeholder="请输入邮箱地址" clearable />
+            <FormItem label="商店地址" :label-width="labelWidth">
+              <Input v-model="formItem.st_address" placeholder="请输入商店地址" clearable />
             </FormItem>
           </Col>
         </Row>
@@ -77,11 +61,13 @@
     <Insert
       :showInsertComponent="showInsert"
       @changeInsertDisplay="showInsert = false"
+      @updateTable="selectTable"
       :v-if="showInsert"
     ></Insert>
     <Update
       :showUpdateComponent="showUpdate"
       @changeUpdateDisplay="showUpdate = false"
+      @updateTable="selectTable"
       :v-if="showUpdate"
       :detail="details"
     ></Update>
@@ -100,11 +86,11 @@
 
 <script>
 import {
-    SYSTEM_USER_MANAGER,
-    SYSTEM_USER_MANAGER_ZHCN,
-} from '@constant/system-manager'
+    BUSINESS_SHOP_MANAGER,
+    BUSINESS_SHOP_MANAGER_ZHCN,
+} from '@constant/business-manager'
 
-import { SystemUserManager } from '@common/urls'
+import { BusinessShopManager } from '@common/urls'
 
 import { dateFormat } from '@common/utils'
 import Detail from './detail.vue'
@@ -112,10 +98,10 @@ import Insert from './insert.vue'
 import Update from './update.vue'
 import { column } from './config'
 
-const { LIST_API, REMOVE_API } = SystemUserManager
+const { LIST_API, REMOVE_API } = BusinessShopManager
 
 export default {
-    name: SYSTEM_USER_MANAGER,
+    name: BUSINESS_SHOP_MANAGER,
     components: {
         Detail,
         Insert,
@@ -123,7 +109,7 @@ export default {
     },
     data() {
         return {
-            title: SYSTEM_USER_MANAGER_ZHCN,
+            title: BUSINESS_SHOP_MANAGER_ZHCN,
             permission: {
                 insert: false,
                 detail: false,
@@ -145,10 +131,8 @@ export default {
             labelWidth: 112,
             editable: false,
             formItem: {
-                userName: '',
-                powerCode: '',
-                phoneNumber: '',
-                emailAddress: '',
+                st_name: '',
+                st_address: '',
             },
 
             // #endregion 表单 Code Module End
@@ -160,17 +144,9 @@ export default {
             showDelete: false,
             deleteIndex: '',
             details: {
-                userId: '',
-                userName: '',
-                powerCode: '',
-                phoneNumber: '',
-                emailAddress: '',
-                userComments: '',
-                userStatus: '',
-                updateUserId: '',
-                updateTime: '',
-                createUserId: '',
-                createTime: '',
+                st_id: '',
+                st_name: '',
+                st_address: '',
             },
 
             // #endregion 抽屉 Code Module End
@@ -190,21 +166,6 @@ export default {
                 // value.detailMessageContext = value.messageContext
                 // value.messageContext = value.messageContext.substr(0, 10) + '...'
                 value.serialNumber = index + 1 + (current - 1) * pageSize
-
-                /* 过滤一下 */
-                let result = value.userStatus
-                switch (result + '') {
-                    case '0':
-                        result = '有效'
-                        break
-                    case '1':
-                        result = '无效'
-                        break
-                    default:
-                        result = '异常'
-                        break
-                }
-                value.userStatus = result
 
                 return value
             })
@@ -243,10 +204,8 @@ export default {
 
         /* 初始化表单 */
         initFormData() {
-            this.formItem.userName = ''
-            this.formItem.powerCode = ''
-            this.formItem.emailAddress = ''
-            this.formItem.phoneNumber = ''
+            this.formItem.st_address = ''
+            this.formItem.st_name = ''
         },
 
         /* 初始化表格状态 */
@@ -288,25 +247,22 @@ export default {
                 pageNumber = pageNumber === undefined ? this.current : pageNumber
                 pageSize = pageSize === undefined ? this.pageSize : pageSize
                 const {
-                    userName,
-                    powerCode,
-                    phoneNumber,
-                    emailAddress,
+                    st_name,
+                    st_address,
                 } = this.formItem
 
                 const result = await this.$axios.post(LIST_API, {
-                    userName,
-                    powerCode,
-                    phoneNumber,
-                    emailAddress,
+                    st_name,
+                    st_address,
                     pageNum: pageNumber,
                     pageSize,
                 })
 
-                const { code, msg } = result
+                const { status: code, message:msg } = result
 
                 // debugger
-                if (code !== '0') {
+                if (code !== 0) {
+                    debugger;
                     this.$Notice.error({
                         title: '消息提示',
                         desc: msg,
@@ -314,7 +270,7 @@ export default {
                 }
 
                 const {
-                    data: { total, queryList, pageSize: pageSize1 },
+                    data: { total, list:queryList, pageSize: pageSize1 },
                 } = result
 
                 this.total = total
@@ -409,7 +365,7 @@ export default {
                       click: index => {
                           this.showDelete = true
                           this.details = params.row
-                          this.deleteId = params.index
+                          this.deleteIndex = params.index
                       },
                   },
               },
@@ -425,12 +381,12 @@ export default {
                 /* 向后端发送一个请求 */
                 const result = await this.$axios.get(REMOVE_API, {
                     params: {
-                        id: this.details.id,
+                        st_id: this.details.st_id,
                     },
                 })
 
-                const { code, msg } = result
-                if (code !== '0') {
+                const { status: code, message:msg } = result
+                if (code !== 0) {
                     this.$Notice.error({
                         title: '消息提示',
                         desc: msg,
@@ -460,7 +416,7 @@ export default {
     },
     beforeMount() {
         const pagePermissions = this.$store.state.pageOperationPermissions
-        const currentPagePermissions = pagePermissions[SYSTEM_USER_MANAGER]
+        const currentPagePermissions = pagePermissions[BUSINESS_SHOP_MANAGER]
         for (let i = 0; i < currentPagePermissions.length; i++) {
             this.permission[currentPagePermissions[i]] = true
         }

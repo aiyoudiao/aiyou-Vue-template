@@ -34,12 +34,12 @@ export const column = [
         display: 'inline',
         expand: true,
         render(h, target) {
-            const { row, column, index } = target;
+            const { row, column, index } = target
             // console.log("row: ", row);
             // console.log("column: ", column);
             // console.log("index: ", index);
-            return h("span", row.text || "-");
-        }
+            return h('span', row.text || '-')
+        },
     },
 
     {
@@ -49,12 +49,12 @@ export const column = [
         tooltip: true,
         display: 'inline',
         render(h, target) {
-            const { row, column, index } = target;
+            const { row, column, index } = target
             // console.log("row: ", row);
             // console.log("column: ", column);
             // console.log("index: ", index);
-            return h("span", row._checked || "-");
-        }
+            return h('span', row._checked || '-')
+        },
     },
 
     {
@@ -65,16 +65,16 @@ export const column = [
         tooltip: true,
         expand: true,
         render(h, target) {
-            const { row, column, index } = target;
-            
+            const { row, column, index } = target
+
             // console.log("target", target);
 
             // console.log("row: ", row);
             // console.log("column: ", column);
             // console.log("index: ", index);
 
-            return h("span", row.name || "-");
-        }
+            return h('span', row.name || '-')
+        },
     },
     {
         title: '字体图标',
@@ -83,12 +83,12 @@ export const column = [
         tooltip: true,
         expand: true,
         render(h, target) {
-            const { row, column, index } = target;
+            const { row, column, index } = target
             // console.log("row: ", row);
             // console.log("column: ", column);
             // console.log("index: ", index);
-            return h("span", row.type || "-");
-        }
+            return h('span', row.type || '-')
+        },
     },
     {
         title: '字体图标大小',
@@ -97,12 +97,12 @@ export const column = [
         tooltip: true,
         expand: true,
         render(h, target) {
-            const { row, column, index } = target;
+            const { row, column, index } = target
             // console.log("row: ", row);
             // console.log("column: ", column);
             // console.log("index: ", index);
-            return h("span", row.size || "-");
-        }
+            return h('span', row.size || '-')
+        },
     },
     {
         title: '是否隐藏',
@@ -111,14 +111,13 @@ export const column = [
         tooltip: true,
         expand: true,
         render(h, target) {
-            const { row, column, index } = target;
+            const { row, column, index } = target
             // console.log("row: ", row);
             // console.log("column: ", column);
             // console.log("index: ", index);
 
-
-            return  h("span", row.hidden || "-");
-        }
+            return h('span', row.hidden || '-')
+        },
     },
     {
         title: '权限',
@@ -127,17 +126,15 @@ export const column = [
         tooltip: true,
         expand: true,
         render(h, target) {
-            const { row, column, index } = target;
+            const { row, column, index } = target
             // console.log("row: ", row);
             // console.log("column: ", column);
             // console.log("index: ", index);
 
-            return h("span", row.permission || "-");
-
-        }
+            return h('span', row.permission || '-')
+        },
     },
 ]
-
 
 /* treeRoot：树根，也就是左侧的角色树 */
 export const treeRoot = [
@@ -191,9 +188,9 @@ export const treeRoot = [
                             type: 'md-home',
                             text: '主页',
                             menuId: '100',
-                        }
-                    ]
-                }
+                        },
+                    ],
+                },
             },
             {
                 title: '管理员',
@@ -225,14 +222,14 @@ export const treeRoot = [
                                 permission: ['insert', 'detail', 'update', 'delete'],
                                 menuId: '10301',
                             }],
-                        }]
-                }
+                        }],
+                },
             },
             {
                 title: '超级管理员',
                 meta: {
-                        
-                    menu:[
+
+                    menu: [
                         {
                             name: 'home',
                             size: 18,
@@ -265,14 +262,14 @@ export const treeRoot = [
                                 permission: ['insert', 'detail', 'update', 'delete'],
                                 menuId: '10302',
                             }],
-                        }]
-                }
+                        }],
+                },
             },
         ],
     },
-];
+]
 
-/* treeTable：树表格，右侧的树形菜单，应该是动态切换的。*/
+/* treeTable：树表格，右侧的树形菜单，应该是动态切换的。 */
 /* 选择全部角色时，显示所有的treeTable行。 */
 /**
  * 选择某个角色时，有两种方案

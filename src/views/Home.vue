@@ -3,21 +3,14 @@
  * @version: 1.0.0
  * @Author: aiyoudiao
  * @Date: 2020-03-24 13:40:32
- * @LastEditTime: 2020-03-31 13:01:32
+ * @LastEditTime: 2020-08-09 22:11:00
  * @LastEditors: aiyoudiao
- * @FilePath: \src\views\Home.vue
+ * @FilePath: \web-fornt\src\views\Home.vue
  -->
 <template>
     <div class="home-container">
         <div class="home-content">
             首页
-            <input type="text">
-            <p>1</p>
-            <p>1</p>
-            <p>1</p>
-            <p>1</p>
-            <p>1</p>
-            <p>1</p>
         </div>
     </div>
 </template>

@@ -40,30 +40,29 @@ function flatTreeTableToObj(obj, treeList) {
                 throw new Error('菜单列表中每一项的name必须唯一。')
             }
 
-            obj[tree.name] = tree;
-        } 
-        
-        if (!tree.name && tree.children) {
-            obj[generateVName(tree.text, tree.type)] = tree;
+            obj[tree.name] = tree
         }
-        
+
+        if (!tree.name && tree.children) {
+            obj[generateVName(tree.text, tree.type)] = tree
+        }
+
         if (tree.children) {
-            const tempChildren = tree.children;
-            tree.children = {};
-            flatTreeTableToObj(tree.children, tempChildren);
+            const tempChildren = tree.children
+            tree.children = {}
+            flatTreeTableToObj(tree.children, tempChildren)
         }
     })
 }
 
 /* 递归的将一个对象转换成一个数组 */
 function flatObjToTreeTable(treeList, obj) {
-    for (var item in obj) {
-
-        treeList.push(obj[item]);
+    for (let item in obj) {
+        treeList.push(obj[item])
         if (obj[item].children) {
-            const tempChildren = obj[item].children;
-            obj[item].children = [];
-            flatObjToTreeTable(obj[item].children, tempChildren);
+            const tempChildren = obj[item].children
+            obj[item].children = []
+            flatObjToTreeTable(obj[item].children, tempChildren)
         }
     }
 }
@@ -71,41 +70,40 @@ function flatObjToTreeTable(treeList, obj) {
 /* 递归的给树形表格中的节点添加属性 */
 function addAttrToTreeTableNode(treeList, attrs) {
     treeList.forEach(tree => {
-        for (var item in attrs) {
-            tree[item] = attrs[item];
+        for (let item in attrs) {
+            tree[item] = attrs[item]
         }
-        
+
         if (tree.children) {
-            addAttrToTreeTableNode(tree.children, attrs);
+            addAttrToTreeTableNode(tree.children, attrs)
         }
     })
 }
 
 /* 递归的检查一遍树形表格阶段的属性， 如果子节点都有这个属性，那么父节点也添加这个属性 */
-function checkAttrToTreeAndParentNode (treeList, attrs) {
-    let isAllAttr = true;
+function checkAttrToTreeAndParentNode(treeList, attrs) {
+    let isAllAttr = true
 
     treeList.forEach(tree => {
         /* 先处理子节点 */
         if (tree.children) {
-            isAllAttr = checkAttrToTreeAndParentNode(tree.children, attrs);
+            isAllAttr = checkAttrToTreeAndParentNode(tree.children, attrs)
 
             /* 将子节点中的树形都设置一下 */
             for (var item in attrs) {
-                tree[item] = isAllAttr;
+                tree[item] = isAllAttr
             }
         }
 
         for (var item in attrs) {
             if (tree[item] !== attrs[item]) {
-                isAllAttr = false;
-                return isAllAttr;
+                isAllAttr = false
+                return isAllAttr
             }
         }
-
     })
 
-    return isAllAttr;
+    return isAllAttr
 }
 
 /* 获取处理完毕的树形表格 */
@@ -128,45 +126,44 @@ function checkAttrToTreeAndParentNode (treeList, attrs) {
 // }
 
 export function getComplateTreeTable(treeTableAll, treeTableOne, attrs) {
-    debugger;
-    addAttrToTreeTableNode(treeTableOne, attrs);
+    // debugger
+    addAttrToTreeTableNode(treeTableOne, attrs)
 
-    const treeTableAllObj = {};
-    const treeTableOneObj = {};
+    const treeTableAllObj = {}
+    const treeTableOneObj = {}
 
-    flatTreeTableToObj(treeTableAllObj, treeTableAll);
-    flatTreeTableToObj(treeTableOneObj, treeTableOne);
+    flatTreeTableToObj(treeTableAllObj, treeTableAll)
+    flatTreeTableToObj(treeTableOneObj, treeTableOne)
 
-    const treeTableObj = mergeTreeTable(treeTableAllObj, treeTableOneObj);
+    const treeTableObj = mergeTreeTable(treeTableAllObj, treeTableOneObj)
 
-    const treeTable = [];
-    flatObjToTreeTable(treeTable, treeTableObj);
-    checkAttrToTreeAndParentNode(treeTable, attrs);
+    const treeTable = []
+    flatObjToTreeTable(treeTable, treeTableObj)
+    checkAttrToTreeAndParentNode(treeTable, attrs)
 
-    return treeTable;
+    return treeTable
 }
 
 /* 合并两个树形表格 */
 function mergeTreeTable(treeTableAllObj, treeTableOneObj) {
-
-    for (var item in treeTableOneObj) {
+    for (let item in treeTableOneObj) {
         if (treeTableAllObj[item].children) {
-            const treeTable = mergeTreeTable(treeTableAllObj[item].children, treeTableOneObj[item].children);
-            treeTableAllObj[item].children = treeTable;
+            const treeTable = mergeTreeTable(treeTableAllObj[item].children, treeTableOneObj[item].children)
+            treeTableAllObj[item].children = treeTable
         } else {
-            treeTableAllObj[item] = treeTableOneObj[item];
+            treeTableAllObj[item] = treeTableOneObj[item]
         }
     }
 
-    return treeTableAllObj;
+    return treeTableAllObj
 }
 
 /* 对于没有name树形的节点，通过它的text和type生成一个虚拟的name，方便查找 */
-function generateVName (text = "", type = "") {
-    return text + '|&-*-&|' + type;
+function generateVName(text = '', type = '') {
+    return text + '|&-*-&|' + type
 }
 
 /* 判断这个节点的key是否是生成的虚拟name */
-function isGenerateVName (key) {
-    return "".indexOf('|&-*-&|') > -1;
+function isGenerateVName(key) {
+    return ''.indexOf('|&-*-&|') > -1
 }

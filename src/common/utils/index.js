@@ -26,7 +26,6 @@ export function getDocumentTitle(pageTitle) {
     return `${defaultDocumentTitle}`
 }
 
-
 export function dateFormat(fmt) {
     /**
   * 将 Date 转化为指定格式的String

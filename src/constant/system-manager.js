@@ -10,7 +10,6 @@ export const SYSTEM_USER_MANAGER_UPDATE_ZHCN = '用户修改'
 export const SYSTEM_USER_MANAGER_DETAIL = 'system-user-manager-detail'
 export const SYSTEM_USER_MANAGER_DETAIL_ZHCN = '用户详情'
 
-
 /* 系统-角色管理 */
 export const SYSTEM_ROLE_MANAGER = 'system-role-manager'
 export const SYSTEM_ROLE_MANAGER_ZHCN = '角色管理'

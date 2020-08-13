@@ -18,7 +18,6 @@ let http = axios.create({
     //             += encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) + '&'
     //         })
 
-
     //         return newData
     //     },
     // ],

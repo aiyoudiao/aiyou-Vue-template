@@ -6,6 +6,11 @@
 
 // import SystemManager from './system-manager';
 const SYSTEM_MANAGER = require('./system-manager')
+const BUSINESS_MANAGER = require('./business-manager')
 
 export const SystemUserManager = SYSTEM_MANAGER.USER_MANAGER
 export const SystemRoleManager = SYSTEM_MANAGER.ROLE_MANAGER
+
+export const BusinessShopManager = BUSINESS_MANAGER.SHOP_MANAGER
+export const BusinessWorkersManager = BUSINESS_MANAGER.WORKERS_MANAGER
+export const BusinessGoodsManager = BUSINESS_MANAGER.GOODS_MANAGER

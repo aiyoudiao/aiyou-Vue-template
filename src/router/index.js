@@ -1,9 +1,19 @@
+/*
+ * @Descripttion: aiyoudiao
+ * @version: 1.0.0
+ * @Author: aiyoudiao
+ * @Date: 2020-08-08 21:04:57
+ * @LastEditTime: 2020-08-09 19:20:08
+ * @LastEditors: aiyoudiao
+ * @FilePath: \web-fornt\src\router\index.js
+ */
 /**
  * 路由注册
  */
 import Vue from 'vue'
 import Router from 'vue-router'
 import SystemManager from './system-manager'
+import BusinessManager from './business-manager'
 
 Vue.use(Router)
 
@@ -50,6 +60,7 @@ export const asyncRoutes = {
         component: () => import('../views/UserInfo.vue'),
     },
     ...SystemManager,
+    ...BusinessManager,
 }
 
 const createRouter = () => new Router({
@@ -62,5 +73,11 @@ export function resetRouter() {
     const newRouter = createRouter()
     router.matcher = newRouter.matcher
 }
+
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
+}
+
 
 export default router

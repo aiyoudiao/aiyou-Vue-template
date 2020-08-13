@@ -18,7 +18,6 @@ Vue.use(VueCookie)
 // 设置基础URL
 // axios.defaults.baseURL = 'http://localhost:8989'
 
-
 // 设置请求超时时间
 axios.defaults.timeout = 3000
 
@@ -31,7 +30,6 @@ axios.defaults.timeout = 3000
 // })
 // axios.interceptors.request.use((request) => request)
 // /* loading、请求地址的替换、修改等等 */
-
 
 // axios.interceptors.response.use(
 //     /* 业务代码 */

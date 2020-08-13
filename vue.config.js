@@ -1,4 +1,12 @@
-
+/*
+ * @Descripttion: aiyoudiao
+ * @version: 1.0.0
+ * @Author: aiyoudiao
+ * @Date: 2020-08-08 21:04:26
+ * @LastEditTime: 2020-08-09 18:51:16
+ * @LastEditors: aiyoudiao
+ * @FilePath: \web-fornt\vue.config.js
+ */
 const path = require('path')
 
 function resolve(dir) {
@@ -29,41 +37,41 @@ module.exports = {
     /* https://cli.vuejs.org/zh/guide/html-and-static-assets.html#%E4%BB%8E%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%AF%BC%E5%85%A5 */
     chainWebpack: config => {
         config.module
-        .rule('images')
-        .use('url-loader')
-        .loader('url-loader')
-        .tap(options => Object.assign(options, { limit: 10240 }))
+            .rule('images')
+            .use('url-loader')
+            .loader('url-loader')
+            .tap(options => Object.assign(options, { limit: 10240 }))
 
         config.resolve.alias
-        .set('@src', resolve('src'))
-        .set('@assets', resolve('src/assets'))
-        .set('@common', resolve('src/common'))
-        .set('@components', resolve('src/components'))
-        .set('@constant', resolve('src/constant'))
-        .set('@router', resolve('src/router'))
-        .set('@store', resolve('src/store'))
-        .set('@views', resolve('src/views'))
-        .set('@permission', resolve('src/permission'))
+            .set('@src', resolve('src'))
+            .set('@assets', resolve('src/assets'))
+            .set('@common', resolve('src/common'))
+            .set('@components', resolve('src/components'))
+            .set('@constant', resolve('src/constant'))
+            .set('@router', resolve('src/router'))
+            .set('@store', resolve('src/store'))
+            .set('@views', resolve('src/views'))
+            .set('@permission', resolve('src/permission'))
     },
     devServer: {
-        // port: 8080,
-        // open: true,
-        // overlay: {
-        //     warnings: false,
-        //     errors: true,
-        // },
-        // proxy: {
-        //     '/api': {
-        //         target: 'http://www.dell-lee.com/', // 对应自己的接口
-        //         // target: 'http://xxxx/device/', // 对应自己的接口
-        //         changeOrigin: true,
-        //         ws: true,
-        //         pathRewrite: {
-        //             '^/api': '',
-        //         },
-        //     },
-        // },
-        before: require('./mock/mock-server.js'),
+        port: 8080,
+        open: true,
+        overlay: {
+            warnings: false,
+            errors: true,
+        },
+        proxy: {
+            '/business': {
+                target: 'http://localhost:8888', // 对应自己的接口
+                // target: 'http://xxxx/device/', // 对应自己的接口
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {
+                    '^/business': '/business',
+                },
+            },
+        },
+        // before: require('./mock/mock-server.js'),
         // before: app => {
         //     app.get('/api/info', (req, res) => {
         //         res.json({
