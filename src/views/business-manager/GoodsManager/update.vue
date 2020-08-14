@@ -81,6 +81,7 @@ export default {
     data() {
         return {
             title: BUSINESS_GOODS_MANAGER_UPDATE_ZHCN,
+            selectList: [],
             styles: {
                 height: 'calc(100% - 55px)',
                 overflow: 'auto',

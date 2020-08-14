@@ -71,6 +71,7 @@ export default {
     data() {
         return {
             title: BUSINESS_GOODS_MANAGER_INSERT_ZHCN,
+            selectList: [],
             styles: {
                 height: 'calc(100% - 55px)',
                 overflow: 'auto',
@@ -78,14 +79,14 @@ export default {
                 position: 'static',
             },
             formData: {
-                 st_id: '',
+                st_id: '',
                 st_name: '',
                 c_name: '',
                 c_price: '',
                 c_size: '',
             },
             ruleCustom: {
-             c_name: [
+            c_name: [
                     {
                         validator: validateNotEmpty,
                         required: false,

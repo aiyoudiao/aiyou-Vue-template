@@ -3,9 +3,9 @@
  * @version: 1.0.0
  * @Author: aiyoudiao
  * @Date: 2020-08-08 21:04:57
- * @LastEditTime: 2020-08-09 22:10:34
+ * @LastEditTime: 2020-08-14 08:12:06
  * @LastEditors: aiyoudiao
- * @FilePath: \web-fornt\src\store\index.js
+ * @FilePath: \aiyou-Vue-template\src\store\index.js
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -23,39 +23,39 @@ const store = new Vuex.Store({
 
             Home,
 
-            // {
-            //     text: '一级菜单',
-            //     type: 'ios-paper',
-            //     hidden: false,
-            //     children: [
-            //         {
-            //             text: '二级菜单',
-            //             type: 'ios-paper',
-            //             hidden: false,
-            //             children: [
-            //                 {
-            //                     type: 'ios-notifications-outline',
-            //                     name: 'msg',
-            //                     text: '查看消息',
-            //                     // hidden: true,
-            //                 },
-            //                 {
-            //                     type: 'md-lock',
-            //                     name: 'password',
-            //                     text: '修改密码',
-            //                     // hidden: true,
-            //                 },
-            //                 {
-            //                     type: 'md-person',
-            //                     name: 'userinfo',
-            //                     text: '基本资料',
-            //                     // hidden: true,
-            //                 },
-            //             ],
-            //         },
-            //     ],
-            // },
-            // SystemManager,
+            {
+                text: '一级菜单',
+                type: 'ios-paper',
+                hidden: false,
+                children: [
+                    {
+                        text: '二级菜单',
+                        type: 'ios-paper',
+                        hidden: false,
+                        children: [
+                            {
+                                type: 'ios-notifications-outline',
+                                name: 'msg',
+                                text: '查看消息',
+                                // hidden: true,
+                            },
+                            {
+                                type: 'md-lock',
+                                name: 'password',
+                                text: '修改密码',
+                                // hidden: true,
+                            },
+                            {
+                                type: 'md-person',
+                                name: 'userinfo',
+                                text: '基本资料',
+                                // hidden: true,
+                            },
+                        ],
+                    },
+                ],
+            },
+            SystemManager,
             BusinessManager,
         ],
 

@@ -81,6 +81,7 @@ export default {
                 paddingBottom: '53px',
                 position: 'static',
             },
+            selectList: [],
             formData: {
                 st_id: '',
                 st_name: '',

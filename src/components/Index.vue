@@ -240,6 +240,7 @@ export default {
     },
     mounted() {
     // 第一个标签
+        debugger;
         const name = this.$route.name
         this.currentPage = name
         this.tagsArry.push({
@@ -303,7 +304,6 @@ export default {
             this.menuItems.forEach(e => {
                 this.processNameToTitle(obj, e)
             })
-
             return obj
         },
     },
@@ -351,10 +351,7 @@ export default {
             window.onresize = () => {
                 // 可视窗口宽度太小 自动收缩侧边栏
                 if (
-                    w < 1300
-          && this.isShowAsideTitle
-          && w
-            > (document.documentElement.clientWidth || document.body.clientWidth)
+                    w < 1300 && this.isShowAsideTitle && w > (document.documentElement.clientWidth || document.body.clientWidth)
                 ) {
                     this.shrinkAside()
                 }
@@ -371,6 +368,11 @@ export default {
         gotoPage(name, params) {
             this.currentPage = name
             this.crumbs = this.paths[name]
+            // 如果传递的参数为空，同时路由名称都一样，那么就没必要跳转路由
+            if (!params && this.$router.currentRoute.name === name) {
+              return;
+            }
+
             this.$router.replace({ name, params })
 
             if (!this.keepAliveData.includes(name)) {
@@ -456,6 +458,7 @@ export default {
         reloadPage() {
             let name = this.$route.name
             let index = this.keepAliveData.indexOf(name)
+
             this.$nextTick(() => {
                 if (this.tagsArry.length) {
                     this.isShowRouter = false
@@ -465,7 +468,7 @@ export default {
                             name,
                             text: this.nameToTitle[name],
                         })
-                        this.gotoPage(name)
+                        // this.gotoPage(name)
                         this.isShowRouter = true
                     })
                 } else {
@@ -511,6 +514,7 @@ export default {
         },
         // 批量关闭标签
         closeTags(flag) {
+
             if (flag == 1) {
                 // 关闭其他标签
                 this.tagsArry = []
@@ -519,7 +523,7 @@ export default {
                 // 关闭所有标签
                 this.tagsArry = []
                 this.gotoPage(this.home)
-                this.reloadPage()
+                // this.reloadPage()
             }
         },
         // 激活标签
@@ -555,8 +559,10 @@ export default {
         },
         // 菜单栏改变事件
         menuChange(data) {
+            /* 记录当前第几个子菜单被点开了，记录的是索引 */
             this.menuCache = data
         },
+        /* 递归的将菜单的中的name转换成 {[name]: 面包屑}的方式，最后赋值给paths */
         processNameToTitle(obj, data, text) {
             if (data.name) {
                 obj[data.name] = data.text
