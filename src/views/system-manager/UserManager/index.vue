@@ -420,7 +420,6 @@ export default {
 
         /* 删除表格中某一项数据 */
         async handelDelete() {
-
             try {
                 /* 向后端发送一个请求 */
                 const result = await this.$axios.get(REMOVE_API, {

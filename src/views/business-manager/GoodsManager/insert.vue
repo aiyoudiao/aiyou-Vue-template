@@ -86,7 +86,7 @@ export default {
                 c_size: '',
             },
             ruleCustom: {
-            c_name: [
+                c_name: [
                     {
                         validator: validateNotEmpty,
                         required: false,
@@ -137,7 +137,6 @@ export default {
             this.handleReset('formData')
         },
         async saveFormData() {
-
             const [
                 st_id,
                 c_name,
@@ -147,7 +146,7 @@ export default {
                 this.formData.st_id,
                 this.formData.c_name,
                 this.formData.c_price,
-                this.formData.c_size
+                this.formData.c_size,
             ]
 
             try {
@@ -159,7 +158,7 @@ export default {
                     c_size,
                 })
 
-                const {  status: code, message:msg  } = result
+                const { status: code, message: msg } = result
                 if (code !== 0) {
                     this.$Notice.error({
                         title: '消息提示',
@@ -170,7 +169,7 @@ export default {
                         title: '消息提示',
                         desc: msg,
                     })
-                    this.$emit("updateTable",{});
+                    this.$emit('updateTable', {})
                 }
             } catch (error) {
                 this.$Notice.error({
@@ -180,7 +179,6 @@ export default {
             }
             this.$emit('changeInsertDisplay')
         },
-
 
         /* 获取下拉列表中的数据 */
         async getSelectList() {
@@ -216,9 +214,8 @@ export default {
         },
     },
 
-
     mounted() {
-        this.getSelectList();
+        this.getSelectList()
     },
 }
 </script>

@@ -91,7 +91,7 @@ export default {
                         message: '请输入商店地址',
                         trigger: 'blur',
                     },
-                ]
+                ],
             },
         }
     },
@@ -131,7 +131,7 @@ export default {
                     st_address,
                 })
 
-                const {  status: code, message:msg  } = result
+                const { status: code, message: msg } = result
                 if (code !== 0) {
                     this.$Notice.error({
                         title: '消息提示',
@@ -142,7 +142,7 @@ export default {
                         title: '消息提示',
                         desc: msg,
                     })
-                    this.$emit("updateTable",{});
+                    this.$emit('updateTable', {})
                 }
             } catch (error) {
                 this.$Notice.error({

@@ -59,11 +59,11 @@ export default {
             required: false,
             default() {
                 return {
-                st_id: '',
-                st_name: '',
-                w_id: '',
-                w_name: '',
-                w_sex: '',
+                    st_id: '',
+                    st_name: '',
+                    w_id: '',
+                    w_name: '',
+                    w_sex: '',
                 }
             },
         },

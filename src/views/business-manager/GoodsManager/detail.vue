@@ -67,12 +67,12 @@ export default {
             required: false,
             default() {
                 return {
-                  st_id: '',
-                  st_name: '',
-                  c_id: '',
-                  c_name: '',
-                  c_price: '',
-                  c_size: '',
+                    st_id: '',
+                    st_name: '',
+                    c_id: '',
+                    c_name: '',
+                    c_price: '',
+                    c_size: '',
                 }
             },
         },

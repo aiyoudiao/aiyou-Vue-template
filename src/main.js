@@ -1,14 +1,28 @@
+/*
+ * @Descripttion: aiyoudiao
+ * @version: 1.0.0
+ * @Author: aiyoudiao
+ * @Date: 2020-08-19 02:11:35
+ * @LastEditTime: 2020-08-19 05:07:24
+ * @LastEditors: aiyoudiao
+ * @FilePath: \aiyou-Vue-template\src\main.js
+ */
 import Vue from 'vue'
 
 import axios from 'axios'
 import ViewUI from 'view-design'
 // import VueAxios from 'vue-axios'
 import VueCookie from 'vue-cookie'
+import VeLine from 'v-charts/lib/line.common'
+import dataV from '@jiaminghi/data-view'
 import App from './App'
 import store from './store'
 import router from './router'
 import 'view-design/dist/styles/iview.css'
 import './permission'
+
+Vue.use(dataV)
+Vue.component(VeLine.name, VeLine)
 
 Vue.config.productionTip = false
 Vue.use(ViewUI)

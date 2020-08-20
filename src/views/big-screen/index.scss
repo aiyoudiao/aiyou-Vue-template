@@ -1,0 +1,179 @@
+/* #dv-full-screen-container */
+::v-deep #dv-full-screen-container {
+  position: absolute;
+  height: auto !important;
+  min-height: 1080px;
+}
+
+::v-deep .dv-scroll-board {
+  color: #333;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+::v-deep .dv-scroll-board .header {
+  font-size: 20px;
+  text-align: center;
+  color: #000;
+  line-height: 30px;
+  position: relative;
+}
+
+::v-deep .dv-scroll-board .header::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #46bab1;
+  bottom: 0px;
+  z-index: 99999;
+}
+
+::v-deep .dv-scroll-board .header .header-item {
+  text-align: center;
+}
+
+::v-deep .dv-scroll-board .rows .row-item {
+  font-size: 20px;
+  height: 50px;
+  line-height: 50px;
+}
+
+::v-deep .dv-scroll-board .rows .ceil {
+  text-align: center;
+}
+
+/* 清除浮动 */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+#index {
+  color: #333;
+  // background-color: #000000;
+  width: 100vw;
+  // height: 100vh;
+  height: calc(97vh - 88px);
+
+  .bg {
+    // padding-left: 50px;
+    // padding-right: 50px;
+    // padding: 0.2rem 0.2rem 0 0.2rem;
+    // background-image: url("../../assets/pageBg.png");
+    // background-size: cover;
+    // background-position: center center;
+  }
+
+  .v-contianer {
+    padding-left: 50px;
+    padding-right: 38px;
+  }
+
+  .source-data-title,
+  .operation-data-title {
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .table-operator {
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .table-operator .left-f {
+    font-size: 20px;
+  }
+
+  .table-operator .right-f {
+    font-size: 30px;
+  }
+
+  .left-f {
+    float: left;
+  }
+
+  .right-f {
+    float: right;
+  }
+
+  .table-detail {
+    //   display: flex;
+    //   justify-content: space-evenly;
+    //   justify-content: flex-start;
+    //   align-items: flex-start;
+    margin-top: -15px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    //justify-content: space-evenly;
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+    }
+
+    span:nth-child(odd) {
+      font-size: 20px;
+    }
+
+    span:nth-child(even) {
+      font-size: 30px;
+    }
+  }
+
+  .source-data-span {
+      margin-top: 40px;
+  }
+
+  .operation-data-span {
+      margin-top: 40px;
+  }
+
+
+  /* 折线图 */
+  .span-length {
+      margin-top: 40px;
+  }
+
+  .line-container {
+    padding-left: 35px;
+    padding-right: 38px;
+  }
+
+  .right-container {
+      display: flex;
+  }
+
+  .right-content-title {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 385px;
+      .content {
+          font-size: 30px;
+          color: #333;
+          writing-mode: vertical-lr;
+      }
+  }
+
+  .right-content-charts {
+      flex: 1;
+      padding-top: 25px;
+      border: 1px solid #000;
+      .content-charts {
+          width: 100%;
+      }
+  }
+
+}

@@ -176,15 +176,15 @@ export default {
             const current = this.current
             const pageSize = this.pageSize
             // console.log(this.queryList, typeof this.queryList)
-           const data = this.queryList.map((value, index) => {
+            const data = this.queryList.map((value, index) => {
                 // value.detailMessageContext = value.messageContext
                 // value.messageContext = value.messageContext.substr(0, 10) + '...'
                 value.serialNumber = index + 1 + (current - 1) * pageSize
 
                 return value
             })
-            debugger;
-            return data;
+            debugger
+            return data
         },
         columnsQuery() {
             return column.concat(
@@ -281,7 +281,7 @@ export default {
 
                 // debugger
                 if (code !== 0) {
-                    debugger;
+                    debugger
                     this.$Notice.error({
                         title: '消息提示',
                         desc: msg,
@@ -312,7 +312,7 @@ export default {
 
                 // debugger
                 if (code !== 0) {
-                    debugger;
+                    debugger
                     this.$Notice.error({
                         title: '消息提示',
                         desc: msg,
@@ -424,7 +424,6 @@ export default {
 
         /* 删除表格中某一项数据 */
         async handelDelete() {
-
             try {
                 /* 向后端发送一个请求 */
                 const result = await this.$axios.get(REMOVE_API, {
@@ -433,7 +432,7 @@ export default {
                     },
                 })
 
-                const { status: code, message:msg } = result
+                const { status: code, message: msg } = result
                 if (code !== 0) {
                     this.$Notice.error({
                         title: '消息提示',
@@ -483,9 +482,8 @@ export default {
     },
 
     mounted() {
-        this.getSelectList();
+        this.getSelectList()
         this.initTable()
-
     },
 }
 </script>

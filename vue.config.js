@@ -37,21 +37,21 @@ module.exports = {
     /* https://cli.vuejs.org/zh/guide/html-and-static-assets.html#%E4%BB%8E%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%AF%BC%E5%85%A5 */
     chainWebpack: config => {
         config.module
-            .rule('images')
-            .use('url-loader')
-            .loader('url-loader')
-            .tap(options => Object.assign(options, { limit: 10240 }))
+        .rule('images')
+        .use('url-loader')
+        .loader('url-loader')
+        .tap(options => Object.assign(options, { limit: 10240 }))
 
         config.resolve.alias
-            .set('@src', resolve('src'))
-            .set('@assets', resolve('src/assets'))
-            .set('@common', resolve('src/common'))
-            .set('@components', resolve('src/components'))
-            .set('@constant', resolve('src/constant'))
-            .set('@router', resolve('src/router'))
-            .set('@store', resolve('src/store'))
-            .set('@views', resolve('src/views'))
-            .set('@permission', resolve('src/permission'))
+        .set('@src', resolve('src'))
+        .set('@assets', resolve('src/assets'))
+        .set('@common', resolve('src/common'))
+        .set('@components', resolve('src/components'))
+        .set('@constant', resolve('src/constant'))
+        .set('@router', resolve('src/router'))
+        .set('@store', resolve('src/store'))
+        .set('@views', resolve('src/views'))
+        .set('@permission', resolve('src/permission'))
     },
     devServer: {
         port: 8080,

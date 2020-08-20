@@ -28,7 +28,7 @@ export const column = [
         // width: 200,
         ellipsis: true,
         tooltip: true,
-    }
+    },
 
     /*     {
             title: '用户状态',

@@ -60,11 +60,11 @@ export default {
             required: false,
             default() {
                 return {
-                st_id: '',
-                st_name: '',
-                w_id: '',
-                w_name: '',
-                w_sex: '',
+                    st_id: '',
+                    st_name: '',
+                    w_id: '',
+                    w_name: '',
+                    w_sex: '',
                 }
             },
         },
@@ -144,7 +144,7 @@ export default {
                 this.formData.st_id,
                 this.formData.w_id,
                 this.formData.w_name,
-                this.formData.w_sex
+                this.formData.w_sex,
             ]
 
             try {
@@ -153,10 +153,10 @@ export default {
                     st_id,
                     w_id,
                     w_name,
-                    w_sex
+                    w_sex,
                 })
 
-                const {  status: code, message:msg  } = result
+                const { status: code, message: msg } = result
                 if (code !== 0) {
                     this.$Notice.error({
                         title: '消息提示',
@@ -167,7 +167,7 @@ export default {
                         title: '消息提示',
                         desc: msg,
                     })
-                    this.$emit("updateTable",{});
+                    this.$emit('updateTable', {})
                 }
             } catch (error) {
                 this.$Notice.error({
@@ -226,8 +226,6 @@ export default {
             this.$refs[name].resetFields()
         },
 
-
-
         /* 获取下拉列表中的数据 */
         async getSelectList() {
             try {
@@ -237,7 +235,7 @@ export default {
 
                 // debugger
                 if (code !== 0) {
-                    debugger;
+                    debugger
                     this.$Notice.error({
                         title: '消息提示',
                         desc: msg,
@@ -259,8 +257,8 @@ export default {
 
     },
 
-        mounted() {
-        this.getSelectList();
+    mounted() {
+        this.getSelectList()
     },
 }
 </script>

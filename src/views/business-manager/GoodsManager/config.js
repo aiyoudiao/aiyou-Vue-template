@@ -39,5 +39,5 @@ export const column = [
         key: 'st_name',
         ellipsis: true,
         tooltip: true,
-    }
+    },
 ]

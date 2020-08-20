@@ -70,7 +70,7 @@ export default {
                 // userStatus: "",
             },
             ruleCustom: {
-                
+
                 st_name: [
                     {
                         validator: validateNotEmpty,
@@ -86,7 +86,7 @@ export default {
                         message: '请输入商店地址',
                         trigger: 'blur',
                     },
-                ]
+                ],
             },
         }
     },
@@ -107,7 +107,7 @@ export default {
         },
         async saveFormData() {
             const [st_name, st_address] = [
-  
+
                 this.formData.st_name,
                 this.formData.st_address,
             ]
@@ -115,10 +115,10 @@ export default {
             try {
                 /* 发请求，接受数据 */
                 const result = await this.$axios.post(INSERT_API, {
-                   st_name, st_address,
+                    st_name, st_address,
                 })
 
-                const {  status: code, message:msg  } = result
+                const { status: code, message: msg } = result
                 if (code !== 0) {
                     this.$Notice.error({
                         title: '消息提示',
@@ -129,7 +129,7 @@ export default {
                         title: '消息提示',
                         desc: msg,
                     })
-                    this.$emit("updateTable",{});
+                    this.$emit('updateTable', {})
                 }
             } catch (error) {
                 this.$Notice.error({

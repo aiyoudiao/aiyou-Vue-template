@@ -127,7 +127,9 @@
               :class="{active: isActive(item.name)}"
               @click="activeTag(index)"
             >
+            <!-- <Tooltip :content="item.text" class="li-a" placement="bottom"> -->
               <a class="li-a">{{item.text}}</a>
+            <!-- </Tooltip> -->
               <Icon size="16" @click="closeTag(index)" type="md-close" />
             </li>
           </ul>
@@ -240,7 +242,7 @@ export default {
     },
     mounted() {
     // 第一个标签
-        debugger;
+        debugger
         const name = this.$route.name
         this.currentPage = name
         this.tagsArry.push({
@@ -370,7 +372,7 @@ export default {
             this.crumbs = this.paths[name]
             // 如果传递的参数为空，同时路由名称都一样，那么就没必要跳转路由
             if (!params && this.$router.currentRoute.name === name) {
-              return;
+                return
             }
 
             this.$router.replace({ name, params })
@@ -514,7 +516,6 @@ export default {
         },
         // 批量关闭标签
         closeTags(flag) {
-
             if (flag == 1) {
                 // 关闭其他标签
                 this.tagsArry = []
@@ -741,12 +742,13 @@ a {
 /* 主要内容区域 */
 .main-content {
   height: calc(100% - 88px);
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow-x: auto;
 }
 .view-c {
   position: relative;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .pointer {
   cursor: pointer;

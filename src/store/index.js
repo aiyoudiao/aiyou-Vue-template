@@ -3,7 +3,7 @@
  * @version: 1.0.0
  * @Author: aiyoudiao
  * @Date: 2020-08-08 21:04:57
- * @LastEditTime: 2020-08-14 08:12:06
+ * @LastEditTime: 2020-08-19 02:50:19
  * @LastEditors: aiyoudiao
  * @FilePath: \aiyou-Vue-template\src\store\index.js
  */
@@ -13,6 +13,7 @@ import Vuex from 'vuex'
 import Home from './home'
 import SystemManager from './system-manager'
 import BusinessManager from './business-manager'
+import BigScreen from './big-screen'
 
 Vue.use(Vuex)
 
@@ -57,6 +58,7 @@ const store = new Vuex.Store({
             },
             SystemManager,
             BusinessManager,
+            BigScreen,
         ],
 
         // 所有页面的操作权限

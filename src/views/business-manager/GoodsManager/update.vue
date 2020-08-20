@@ -65,12 +65,12 @@ export default {
             required: false,
             default() {
                 return {
-                  st_id: '',
-                  st_name: '',
-                  c_id: '',
-                  c_name: '',
-                  c_price: '',
-                  c_size: '',
+                    st_id: '',
+                    st_name: '',
+                    c_id: '',
+                    c_name: '',
+                    c_price: '',
+                    c_size: '',
                 }
             },
         },
@@ -161,7 +161,7 @@ export default {
                 this.formData.c_id,
                 this.formData.c_name,
                 this.formData.c_price,
-                this.formData.c_size
+                this.formData.c_size,
             ]
 
             try {
@@ -174,7 +174,7 @@ export default {
                     c_size,
                 })
 
-                const {  status: code, message:msg  } = result
+                const { status: code, message: msg } = result
                 if (code !== 0) {
                     this.$Notice.error({
                         title: '消息提示',
@@ -185,7 +185,7 @@ export default {
                         title: '消息提示',
                         desc: msg,
                     })
-                    this.$emit("updateTable",{});
+                    this.$emit('updateTable', {})
                 }
             } catch (error) {
                 this.$Notice.error({
@@ -248,8 +248,6 @@ export default {
             this.$refs[name].resetFields()
         },
 
-
-
         /* 获取下拉列表中的数据 */
         async getSelectList() {
             try {
@@ -281,8 +279,8 @@ export default {
 
     },
 
-        mounted() {
-        this.getSelectList();
+    mounted() {
+        this.getSelectList()
     },
 }
 </script>

@@ -258,11 +258,11 @@ export default {
                     pageSize,
                 })
 
-                const { status: code, message:msg } = result
+                const { status: code, message: msg } = result
 
                 // debugger
                 if (code !== 0) {
-                    debugger;
+                    debugger
                     this.$Notice.error({
                         title: '消息提示',
                         desc: msg,
@@ -270,7 +270,7 @@ export default {
                 }
 
                 const {
-                    data: { total, list:queryList, pageSize: pageSize1 },
+                    data: { total, list: queryList, pageSize: pageSize1 },
                 } = result
 
                 this.total = total
@@ -376,7 +376,6 @@ export default {
 
         /* 删除表格中某一项数据 */
         async handelDelete() {
-
             try {
                 /* 向后端发送一个请求 */
                 const result = await this.$axios.get(REMOVE_API, {
@@ -385,7 +384,7 @@ export default {
                     },
                 })
 
-                const { status: code, message:msg } = result
+                const { status: code, message: msg } = result
                 if (code !== 0) {
                     this.$Notice.error({
                         title: '消息提示',

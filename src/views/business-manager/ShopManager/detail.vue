@@ -58,7 +58,7 @@ export default {
                     st_id: '',
                     st_name: '',
                     st_address: '',
-                  
+
                 }
             },
         },

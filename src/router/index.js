@@ -3,9 +3,9 @@
  * @version: 1.0.0
  * @Author: aiyoudiao
  * @Date: 2020-08-08 21:04:57
- * @LastEditTime: 2020-08-09 19:20:08
+ * @LastEditTime: 2020-08-19 02:47:54
  * @LastEditors: aiyoudiao
- * @FilePath: \web-fornt\src\router\index.js
+ * @FilePath: \aiyou-Vue-template\src\router\index.js
  */
 /**
  * 路由注册
@@ -14,6 +14,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import SystemManager from './system-manager'
 import BusinessManager from './business-manager'
+import BigScreen from './big-screen'
 
 Vue.use(Router)
 
@@ -61,6 +62,7 @@ export const asyncRoutes = {
     },
     ...SystemManager,
     ...BusinessManager,
+    ...BigScreen,
 }
 
 const createRouter = () => new Router({
@@ -78,6 +80,5 @@ const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
     return originalPush.call(this, location).catch(err => err)
 }
-
 
 export default router
